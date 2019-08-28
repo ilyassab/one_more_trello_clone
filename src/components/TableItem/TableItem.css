@@ -1,0 +1,22 @@
+.tableItem_column {
+    display:flex;
+    flex-direction: column;
+    position: relative;
+
+    background-color: #DFE3E6;
+    min-width: 272px;
+    border-radius: 3px;
+    margin-right: 12px;
+    margin-bottom: 21px;
+    height: 100%;
+}
+
+.tableItem_title {
+    font-family: Montserrat, Arial, Verdana, sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 13px;
+    line-height: 19px;
+    padding: 8px 0 12px 12px;
+    color: #000;
+}
