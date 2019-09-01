@@ -1,10 +1,12 @@
+import uniqueId from "../utils/uuid";
+
 export interface ITicket {
-    id: number;
+    id: string;
     text: string;
 }
 
 export interface ITable {
-    id: number;
+    id: string;
     name: string;
     tickets: ITicket[];
 }
@@ -12,10 +14,10 @@ export interface ITable {
 class TableService {
 
     data = [
-        {id: 'table0', name: 'Prod', tickets: [{id: 'ticket0', text: 'hello'}, {id: 'ticket1', text: 'hei'}]},
-        {id: 'table1', name: 'Testing', tickets: [{id: 'ticket2', text: 'qaaa'}, {id: 'ticket3', text: 'zaaaa'}]},
-        {id: 'table2', name: 'Tres', tickets: [{id: 'ticket4', text: 'qaaa'}, {id: 'ticket5', text: 'zaaaa'}]},
-        {id: 'table3', name: 'Wres', tickets: [{id: 'ticket6', text: 'qaaa'}, {id: 'ticket7', text: 'zaaaa'}]},
+        {id: `${uniqueId()}`, name: 'Prod', tickets: [{id: `${uniqueId()}`, text: 'hello'}, {id: `${uniqueId()}`, text: 'hei'}]},
+        {id: `${uniqueId()}`, name: 'Testing', tickets: [{id: `${uniqueId()}`, text: 'qaaa'}, {id: `${uniqueId()}`, text: 'zaaaa'}]},
+        {id: `${uniqueId()}`, name: 'Tres', tickets: [{id: `${uniqueId()}`, text: 'qaaa'}, {id: `${uniqueId()}`, text: 'zaaaa'}]},
+        {id: `${uniqueId()}`, name: 'Wres', tickets: [{id: `${uniqueId()}`, text: 'qaaa'}, {id: `${uniqueId()}`, text: 'zaaaa'}]},
     ];
 
     getTables() {

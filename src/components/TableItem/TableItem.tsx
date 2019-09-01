@@ -36,7 +36,7 @@ class TableItem extends React.Component<IProps, {}> {
 
                                             <TicketList tickets={table.tickets}/>
                                             {provided.placeholder}
-                                            <TicketAdder/>
+                                            <TicketAdder tableId={`${table.id}`}/>
                                         </div>
                                     </div>
                                 )

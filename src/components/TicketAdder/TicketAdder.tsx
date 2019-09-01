@@ -1,13 +1,73 @@
 import React from "react";
 
+import uniqueId from "../../utils/uuid";
+import * as actions from '../../actions'
+import {store} from "../../store";
 import './TicketAdder.css';
 
-class TicketAdder extends React.Component {
+interface IProps {
+    tableId: string;
+}
+
+interface IState {
+    adding: boolean;
+    text: string;
+}
+
+class TicketAdder extends React.Component<IProps, IState> {
+
+    state = {
+        adding: false,
+        text: '',
+    };
+
     render() {
+
+        const {adding} = this.state;
+
+        const inputClassName = adding ? '' : 'ticketAdder_hidden';
+        const adderClassName = adding ? 'ticketAdder_item ticketAdder_hidden' : 'ticketAdder_item';
+
         return (
-            <p className="ticketAdder_item">Добавить еще одну карточку</p>
+            <React.Fragment>
+                <div className={inputClassName}>
+                    <textarea className="ticketAdder_textarea" name="text" onChange={this.textAreaChange}
+                              placeholder="Введите название карточки" value={this.state.text}/>
+                    <button type='submit' className="ticketAdder_button" onClick={this.addTicket}>Добавить карточку</button>
+                    <div className='ticketAdder_cross' onClick={this.addCardAction}/>
+                </div>
+                <div className={adderClassName} onClick={this.addCardAction}>Добавить еще одну карточку</div>
+            </React.Fragment>
         );
     }
+
+    addCardAction = () => {
+        this.setState(({adding}) => ({
+            adding: !adding
+        }))
+    };
+
+    textAreaChange = (event: any) => {
+        this.setState({text: event.currentTarget.value})
+    };
+
+    addTicket = () => {
+        const {tableId} = this.props;
+        const {tables}: any = store.getState();
+        const newTables = [];
+        for (let i = 0; i < tables.length; i++) {
+            const {tickets, ...rest} = tables[i];
+            newTables[i] = {...rest, tickets: [...tickets]};
+        }
+        const table = newTables.find(((element: any) => element.id === tableId));
+        table.tickets.push({id: `${uniqueId()}`, text: this.state.text});
+        store.dispatch(actions.tablesLoaded(newTables));
+        this.setState({
+            adding: false,
+            text: ''
+        })
+    };
+
 }
 
 export default TicketAdder;

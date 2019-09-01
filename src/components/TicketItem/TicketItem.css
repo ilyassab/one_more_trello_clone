@@ -3,7 +3,7 @@
     box-shadow: 0 1px 4px rgba(9, 45, 66, 0.25);
     border-radius: 3px;
     padding: 8px;
-    margin: 6px 8px;
+    margin: 0 8px 6px 8px;
     white-space: pre-line;
     text-overflow: ellipsis;
     overflow:hidden;
@@ -15,4 +15,13 @@
     font-weight: normal;
     font-size: 13px;
     line-height:19px;
+}
+
+.ticketItem_cross {
+    width:10px;
+    height:10px;
+    float: right;
+    background-image: url(../../images/cross10.svg);
+    opacity:1;
+    cursor:pointer;
 }
