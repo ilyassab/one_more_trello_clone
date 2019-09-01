@@ -7,6 +7,7 @@ import {IReduxState} from "../../reducers";
 import {withTableService} from "../wIthTableService/withTableService";
 import * as actions from "../../actions";
 import compose from '../../utils/compose';
+import {store} from "../../store";
 import {DragDropContext, Droppable} from 'react-beautiful-dnd';
 
 import './TableList.css';
@@ -17,6 +18,7 @@ interface IProps {
     tableService: any;
     tablesLoaded: any;
     tablesRequested: any;
+    tablesAdded: any;
     ticketAdded: any;
 }
 
@@ -40,12 +42,12 @@ class TableList extends React.Component<IProps, {}> {
                 onDragEnd={this.onDragEnd}
             >
                 <Droppable droppableId='allColumns' direction='horizontal' type='column'>
-                    {(provided) => {
+                    {(providedColumn) => {
                         return (
                             <div
                                 className='tableList_wrap'
-                                ref={provided.innerRef}
-                                {...provided.droppableProps}
+                                ref={providedColumn.innerRef}
+                                {...providedColumn.droppableProps}
                             >
                                 {
                                     tables.map((table, index) => {
@@ -56,9 +58,10 @@ class TableList extends React.Component<IProps, {}> {
                                         )
                                     })
                                 }
-                                {provided.placeholder}
+                                {providedColumn.placeholder}
                             </div>
-                        )}
+                        )
+                    }
                     }
                 </Droppable>
             </DragDropContext>
@@ -67,8 +70,12 @@ class TableList extends React.Component<IProps, {}> {
 
     onDragEnd = (result: any) => {
         const {destination, source, type} = result;
-        const {tables} = this.props;
-
+        const {tables}: any = store.getState();
+        const newTables = [];
+        for (let i = 0; i < tables.length; i++) {
+            const {tickets, ...rest} = tables[i];
+            newTables[i] = {...rest, tickets: [...tickets]};
+        }
         if (!destination) {
             return;
         }
@@ -79,15 +86,17 @@ class TableList extends React.Component<IProps, {}> {
             return;
         }
         if (type === 'ticket') {
-            const fromTable = tables.find((element: any) => `${element.id}` === source.droppableId);
-            const toTable = tables.find((element: any) => `${element.id}` === destination.droppableId);
-            const ticket: any = fromTable && fromTable.tickets.find((element, index) => index === source.index);
+            const fromTable: any = newTables.find((element: any) => `${element.id}` === source.droppableId);
+            const toTable: any = newTables.find((element: any) => `${element.id}` === destination.droppableId);
+            const ticket: any = fromTable && fromTable.tickets.find((element: any, index: any) => index === source.index);
             fromTable && fromTable.tickets.splice(source.index, 1);
             toTable && toTable.tickets.splice(destination.index, 0, ticket);
+            this.props.tablesAdded(newTables);
         } else if (type === 'column') {
-            const table: any = tables.find((element, index) => index === source.index);
-            tables.splice(source.index, 1);
-            tables.splice(destination.index, 0, table);
+            const table: any = newTables.find((element: any, index: any) => index === source.index);
+            newTables.splice(source.index, 1);
+            newTables.splice(destination.index, 0, table);
+            this.props.tablesAdded(newTables);
         }
     }
 }

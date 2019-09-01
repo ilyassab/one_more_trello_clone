@@ -16,35 +16,34 @@ class TableItem extends React.Component<IProps, {}> {
         const {table, index} = this.props;
         return (
             <Draggable draggableId={`${table.id}`} index={index}>
-                {(provided) => {
+                {(providedColumn) => {
                     return (
-                        <div
-                            ref={provided.innerRef}
-                            className='tableItem_column'
-                            {...provided.draggableProps}
-                        >
-                            <div className='tableItem_title' {...provided.dragHandleProps}>
-                                {table.name}
-                            </div>
-                            <Droppable droppableId={`${table.id}`} type='ticket'>
-                                {(provided) => {
-                                    return (
+                        <Droppable droppableId={`${table.id}`} type='ticket'>
+                            {(provided) => {
+                                return (
+                                    <div
+                                        ref={providedColumn.innerRef}
+                                        className='tableItem_column'
+                                        {...providedColumn.draggableProps}
+                                    >
                                         <div
                                             ref={provided.innerRef}
                                             {...provided.droppableProps}
                                         >
+                                            <div className='tableItem_title' {...providedColumn.dragHandleProps}>
+                                                {table.name}
+                                            </div>
+
                                             <TicketList tickets={table.tickets}/>
                                             {provided.placeholder}
+                                            <TicketAdder/>
                                         </div>
-                                    )
-                                }
-                                }
-                            </Droppable>
-                            <TicketAdder />
-                        </div>
+                                    </div>
+                                )
+                            }}
+                        </Droppable>
                     )
-                }
-                }
+                }}
             </Draggable>
         );
     }

@@ -23,6 +23,12 @@ const reducer = (state = initialState, action: any) => {
                 tables: action.payload,
                 loading: false,
             };
+        case 'TABLES_ADDED':
+            return {
+                ...state,
+                tables: action.payload,
+                loading: false,
+            };
         default:
             return state;
     }

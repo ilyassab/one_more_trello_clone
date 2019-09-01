@@ -11,7 +11,15 @@ const tablesRequested = () => {
     };
 };
 
+const tablesAdded = (newTables: any) => {
+    return {
+        type: 'TABLES_ADDED',
+        payload: newTables
+    }
+};
+
 export {
     tablesRequested,
     tablesLoaded,
+    tablesAdded
 };
