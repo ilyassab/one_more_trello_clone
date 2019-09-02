@@ -62,3 +62,7 @@
     opacity:1;
     cursor:pointer;
 }
+
+.ticketAdder_wrap {
+    max-width: 272px;
+}
