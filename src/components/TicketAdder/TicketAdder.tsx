@@ -1,6 +1,7 @@
 import React from "react";
 
 import uniqueId from "../../utils/uuid";
+import Textarea from 'react-textarea-autosize';
 import * as actions from '../../actions'
 import {store} from "../../store";
 import './TicketAdder.css';
@@ -31,7 +32,7 @@ class TicketAdder extends React.Component<IProps, IState> {
         return (
             <React.Fragment>
                 <div className={inputClassName}>
-                    <textarea className="ticketAdder_textarea" name="text" onChange={this.textAreaChange}
+                    <Textarea className="ticketAdder_textarea" onChange={this.textAreaChange}
                               placeholder="Введите название карточки" value={this.state.text}/>
                     <button type='submit' className="ticketAdder_button" onClick={this.addTicket}>Добавить карточку
                     </button>

@@ -53,9 +53,7 @@ class TableList extends React.Component<IProps, {}> {
                                 {
                                     tables.map((table, index) => {
                                         return (
-                                            <React.Fragment key={index}>
-                                                <TableItem table={table} index={index}/>
-                                            </React.Fragment>
+                                                <TableItem table={table} index={index} key={table.id}/>
                                         )
                                     })
                                 }

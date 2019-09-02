@@ -58,9 +58,7 @@ class TableItem extends React.Component<IProps, {}> {
             const {tickets, ...rest} = tables[i];
             newTables[i] = {...rest, tickets: [...tickets]};
         }
-        console.log(table, tables);
         const deleteIndex = newTables.findIndex((element: any) => element.id === table.id);
-        console.log(deleteIndex);
         newTables.splice(deleteIndex, 1);
         store.dispatch(actions.tablesLoaded(newTables));
     }
