@@ -9,6 +9,7 @@ import * as actions from "../../actions";
 import compose from '../../utils/compose';
 import {store} from "../../store";
 import {DragDropContext, Droppable} from 'react-beautiful-dnd';
+import TableAdder from "../TableAdder/TableAdder";
 
 import './TableList.css';
 
@@ -59,6 +60,7 @@ class TableList extends React.Component<IProps, {}> {
                                     })
                                 }
                                 {providedColumn.placeholder}
+                                <TableAdder />
                             </div>
                         )
                     }

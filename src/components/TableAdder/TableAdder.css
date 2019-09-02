@@ -1,0 +1,80 @@
+.tableAdder_item {
+    font-family: Montserrat, Arial, Verdana, sans-serif;
+    font-size: 13px;
+    box-sizing:border-box;
+    color: #6B808C;
+    padding: 12px;
+    cursor: pointer;
+}
+
+.tableAdder_hidden{
+    display: none;
+}
+
+.tableAdder_button {
+    margin-left: 8px;
+    margin-bottom: 8px;
+
+    background: #39C071;
+    border-radius: 3px;
+
+    width: 152px;
+    height: 30px;
+    border:0;
+    cursor: pointer;
+
+    font-family: Montserrat, Arial, Verdana, sans-serif;
+    font-weight: bold;
+    font-size: 13px;
+    line-height: 19px;
+    color: white;
+}
+
+.tableAdder_textarea {
+    resize:none;
+    margin-left: 8px;
+    margin-top: 6px;
+    margin-bottom: 2px;
+    min-width: 237px;
+    padding: 8px 6px 8px 12px;
+    box-shadow: 0 1px 4px rgba(9, 45, 66, 0.25);
+    border-radius: 3px;
+    overflow: hidden;
+
+    font-family: Montserrat, Arial, Verdana, sans-serif;
+    font-size: 13px;
+    line-height: 19px;
+}
+
+.tableAdder_item:before {
+    content: "";
+    padding: 0 15px 0 8px;
+    background: url('../../images/plus.svg') 0 0 no-repeat;
+}
+
+.tableAdder_cross {
+    width:15px;
+    height:15px;
+    float: right;
+    margin-right: 10px;
+    margin-top: 13px;
+    background-image: url(../../images/cross.svg);
+    opacity:1;
+    cursor:pointer;
+}
+
+.tableAdder_wrap {
+    max-width: 272px;
+}
+
+.tableAdder_column {
+    display:flex;
+    flex-direction: column;
+
+    background-color: #DFE3E6;
+    min-width: 272px;
+    border-radius: 3px;
+    margin-right: 12px;
+    margin-bottom: 21px;
+    height: 100%;
+}
