@@ -4,7 +4,8 @@
     position: relative;
 
     background-color: #DFE3E6;
-    width: 272px;
+    min-width: 272px;
+    max-width: 272px;
     border-radius: 3px;
     margin-right: 12px;
     margin-bottom: 21px;
