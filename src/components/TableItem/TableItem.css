@@ -1,8 +1,4 @@
 .tableItem_column {
-    display:flex;
-    flex-direction: column;
-    position: relative;
-
     background-color: #DFE3E6;
     min-width: 272px;
     max-width: 272px;

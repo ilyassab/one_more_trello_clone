@@ -28,22 +28,19 @@ class TableItem extends React.Component<IProps, {}> {
                                         className='tableItem_column'
                                         {...providedColumn.draggableProps}
                                     >
-                                        <div
-                                        >
-                                            <div className='tableItem_title' {...providedColumn.dragHandleProps}>
-                                                <div className="tableItem_cross" onClick={this.deleteTable}/>
-                                                {table.name}
-                                            </div>
-                                            <div
-                                                {...provided.droppableProps}
-                                                ref={provided.innerRef}
-                                                className='tableItem_scrollable'
-                                            >
-                                                <TicketList tickets={table.tickets}/>
-                                                {provided.placeholder}
-                                            </div>
-                                            <TicketAdder tableId={`${table.id}`}/>
+                                        <div className='tableItem_title' {...providedColumn.dragHandleProps}>
+                                            <div className="tableItem_cross" onClick={this.deleteTable}/>
+                                            {table.name}
                                         </div>
+                                        <div
+                                            {...provided.droppableProps}
+                                            ref={provided.innerRef}
+                                            className='tableItem_scrollable'
+                                        >
+                                            <TicketList tickets={table.tickets}/>
+                                            {provided.placeholder}
+                                        </div>
+                                        <TicketAdder tableId={`${table.id}`}/>
                                     </div>
                                 )
                             }}
