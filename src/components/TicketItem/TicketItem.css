@@ -20,6 +20,7 @@
 .ticketItem_cross {
     width:10px;
     height:10px;
+    margin-left: 6px;
     float: right;
     background-image: url(../../images/cross10.svg);
     opacity:1;

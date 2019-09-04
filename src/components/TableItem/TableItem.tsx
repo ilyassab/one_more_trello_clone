@@ -29,15 +29,19 @@ class TableItem extends React.Component<IProps, {}> {
                                         {...providedColumn.draggableProps}
                                     >
                                         <div
-                                            ref={provided.innerRef}
-                                            {...provided.droppableProps}
                                         >
                                             <div className='tableItem_title' {...providedColumn.dragHandleProps}>
+                                                <div className="tableItem_cross" onClick={this.deleteTable}/>
                                                 {table.name}
                                             </div>
-                                            <div className="tableItem_cross" onClick={this.deleteTable}/>
-                                            <TicketList tickets={table.tickets}/>
-                                            {provided.placeholder}
+                                            <div
+                                                {...provided.droppableProps}
+                                                ref={provided.innerRef}
+                                                className='tableItem_scrollable'
+                                            >
+                                                <TicketList tickets={table.tickets}/>
+                                                {provided.placeholder}
+                                            </div>
                                             <TicketAdder tableId={`${table.id}`}/>
                                         </div>
                                     </div>

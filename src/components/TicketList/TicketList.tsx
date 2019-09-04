@@ -13,6 +13,10 @@ class TicketList extends React.Component<IProps, {}> {
 
         const {tickets} = this.props;
 
+        if (tickets.length === 0) {
+            return <div className='ticketList_zeroItems'>Drop here...</div>
+        }
+
         return (
             <React.Fragment>
                 {
