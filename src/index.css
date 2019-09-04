@@ -5,4 +5,5 @@ html {
 
 body {
   background: url('./images/background.jpg') 0 0 / cover  no-repeat ;
+  font-family: Montserrat, Arial, Verdana, sans-serif;
 }

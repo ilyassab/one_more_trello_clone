@@ -15,7 +15,7 @@ class TicketList extends React.Component<IProps, {}> {
         const {tickets, snapshot} = this.props;
 
         if (tickets.length === 0 && !snapshot.isDraggingOver) {
-            return <div className='ticketList_zeroItems'>Drop here...</div>
+            return <div className='ticketList_zeroItems'>Add ticket</div>
         }
 
         return (
