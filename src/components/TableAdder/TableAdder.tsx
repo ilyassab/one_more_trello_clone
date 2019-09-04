@@ -1,6 +1,7 @@
 import React from "react";
 
 import uniqueId from "../../utils/uuid";
+import Textarea from 'react-textarea-autosize';
 import * as actions from '../../actions'
 import {store} from "../../store";
 import './TableAdder.css';
@@ -27,7 +28,7 @@ class TableAdder extends React.Component<{}, IState> {
         return (
             <div className='tableAdder_column'>
                 <div className={inputClassName}>
-                    <textarea className="tableAdder_textarea" name="text" onChange={this.textAreaChange}
+                    <Textarea className="tableAdder_textarea" onChange={this.textAreaChange}
                               placeholder="Введите название колонки" value={this.state.text}/>
                     <button type='submit' className="tableAdder_button" onClick={this.addTable}>Добавить колонку
                     </button>
