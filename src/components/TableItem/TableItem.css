@@ -21,9 +21,7 @@
     padding: 8px 8px 12px 12px;
     color: #000;
 
-    white-space: pre-line;
-    text-overflow: ellipsis;
-    overflow:hidden;
+    white-space: pre-wrap;
     word-wrap:break-word;
 }
 
