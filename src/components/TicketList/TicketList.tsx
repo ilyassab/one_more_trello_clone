@@ -6,14 +6,15 @@ import './TicketList.css';
 
 interface IProps {
     tickets: ITicket[];
+    snapshot: any;
 }
 
 class TicketList extends React.Component<IProps, {}> {
     render() {
 
-        const {tickets} = this.props;
+        const {tickets, snapshot} = this.props;
 
-        if (tickets.length === 0) {
+        if (tickets.length === 0 && !snapshot.isDraggingOver) {
             return <div className='ticketList_zeroItems'>Drop here...</div>
         }
 

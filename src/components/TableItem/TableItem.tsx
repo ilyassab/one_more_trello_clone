@@ -21,7 +21,7 @@ class TableItem extends React.Component<IProps, {}> {
                 {(providedColumn) => {
                     return (
                         <Droppable droppableId={`${table.id}`} type='ticket'>
-                            {(provided) => {
+                            {(provided, snapshot) => {
                                 return (
                                     <div
                                         ref={providedColumn.innerRef}
@@ -37,7 +37,7 @@ class TableItem extends React.Component<IProps, {}> {
                                             ref={provided.innerRef}
                                             className='tableItem_scrollable'
                                         >
-                                            <TicketList tickets={table.tickets}/>
+                                            <TicketList tickets={table.tickets} snapshot={snapshot}/>
                                             {provided.placeholder}
                                         </div>
                                         <TicketAdder tableId={`${table.id}`}/>
