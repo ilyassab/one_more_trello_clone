@@ -7,6 +7,7 @@ import './TableItem.css'
 import TicketAdder from "../TicketAdder/TicketAdder";
 import {store} from "../../store";
 import * as actions from "../../actions";
+import {IReduxState} from "../../reducers";
 
 interface IProps {
     table: ITable;
@@ -53,13 +54,13 @@ class TableItem extends React.Component<IProps, {}> {
 
     deleteTable = () => {
         const {table} = this.props;
-        const {tables}: any = store.getState();
+        const {tables}: IReduxState = store.getState();
         const newTables = [];
         for (let i = 0; i < tables.length; i++) {
             const {tickets, ...rest} = tables[i];
             newTables[i] = {...rest, tickets: [...tickets]};
         }
-        const deleteIndex = newTables.findIndex((element: any) => element.id === table.id);
+        const deleteIndex = newTables.findIndex((element) => element.id === table.id);
         newTables.splice(deleteIndex, 1);
         store.dispatch(actions.tablesLoaded(newTables));
     }

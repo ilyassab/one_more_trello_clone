@@ -1,7 +1,7 @@
 import React from "react";
 import {connect} from 'react-redux';
 
-import {ITable} from '../../services/TableService';
+import {ITable, ITicket} from '../../services/TableService';
 import TableItem from "../TableItem/TableItem";
 import {IReduxState} from "../../reducers";
 import {withTableService} from "../wIthTableService/withTableService";
@@ -25,11 +25,11 @@ interface IProps {
 
 class TableList extends React.Component<IProps, {}> {
 
-    componentDidMount(): void {
+    componentDidMount() {
         const {tableService, tablesLoaded, tablesRequested} = this.props;
         tablesRequested();
         tableService.getTables()
-            .then((data: any) => tablesLoaded(data))
+            .then((data: ITable[]) => tablesLoaded(data))
     }
 
     render() {
@@ -45,20 +45,23 @@ class TableList extends React.Component<IProps, {}> {
                 <Droppable droppableId='allColumns' direction='horizontal' type='column'>
                     {(providedColumn) => {
                         return (
-                            <div
-                                className='tableList_wrap'
-                                ref={providedColumn.innerRef}
-                                {...providedColumn.droppableProps}
+                            <div className="tableList_scrollable"
+                                 ref={providedColumn.innerRef}
+                                 {...providedColumn.droppableProps}
                             >
-                                {
-                                    tables.map((table, index) => {
-                                        return (
+                                <div
+                                    className='tableList_wrap'
+                                >
+                                    {
+                                        tables.map((table, index) => {
+                                            return (
                                                 <TableItem table={table} index={index} key={table.id}/>
-                                        )
-                                    })
-                                }
-                                {providedColumn.placeholder}
-                                <TableAdder />
+                                            )
+                                        })
+                                    }
+                                    {providedColumn.placeholder}
+                                    <TableAdder/>
+                                </div>
                             </div>
                         )
                     }
@@ -70,7 +73,7 @@ class TableList extends React.Component<IProps, {}> {
 
     onDragEnd = (result: any) => {
         const {destination, source, type} = result;
-        const {tables}: any = store.getState();
+        const {tables}: IReduxState = store.getState();
         const newTables = [];
         for (let i = 0; i < tables.length; i++) {
             const {tickets, ...rest} = tables[i];
@@ -86,16 +89,17 @@ class TableList extends React.Component<IProps, {}> {
             return;
         }
         if (type === 'ticket') {
-            const fromTable: any = newTables.find((element: any) => `${element.id}` === source.droppableId);
-            const toTable: any = newTables.find((element: any) => `${element.id}` === destination.droppableId);
-            const ticket: any = fromTable && fromTable.tickets.find((element: any, index: any) => index === source.index);
+            const fromTable = newTables.find((element) => `${element.id}` === source.droppableId);
+            const toTable = newTables.find((element) => `${element.id}` === destination.droppableId);
+            const ticket = fromTable && fromTable.tickets
+                .find((element: ITicket, index: number) => index === source.index);
             fromTable && fromTable.tickets.splice(source.index, 1);
-            toTable && toTable.tickets.splice(destination.index, 0, ticket);
+            toTable && ticket && toTable.tickets.splice(destination.index, 0, ticket);
             this.props.tablesAdded(newTables);
         } else if (type === 'column') {
-            const table: any = newTables.find((element: any, index: any) => index === source.index);
+            const table = newTables.find((element, index) => index === source.index);
             newTables.splice(source.index, 1);
-            newTables.splice(destination.index, 0, table);
+            table && newTables.splice(destination.index, 0, table);
             this.props.tablesAdded(newTables);
         }
     }

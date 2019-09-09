@@ -1,7 +1,7 @@
 import {ITable} from "../services/TableService";
 
 export interface IReduxState {
-    tables: [ITable];
+    tables: ITable[];
     loading: boolean;
 }
 

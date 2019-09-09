@@ -5,6 +5,7 @@ import './TicketItem.css';
 import {Draggable} from "react-beautiful-dnd";
 import {store} from "../../store";
 import * as actions from "../../actions";
+import {IReduxState} from "../../reducers";
 
 interface IProps {
     ticket: ITicket;
@@ -37,8 +38,8 @@ class TicketItem extends React.Component<IProps, {}> {
     }
 
     deleteTicket = () => {
-        const { ticket } = this.props;
-        const {tables}: any = store.getState();
+        const {ticket} = this.props;
+        const {tables}: IReduxState = store.getState();
         const newTables = [];
         for (let i = 0; i < tables.length; i++) {
             const {tickets, ...rest} = tables[i];
@@ -53,8 +54,8 @@ class TicketItem extends React.Component<IProps, {}> {
             }
             return item;
         });
-        const deleteIndex = table.tickets.findIndex((element: any) => element.id === ticket.id);
-        table.tickets.splice(deleteIndex, 1);
+        const deleteIndex = table && table.tickets.findIndex((element) => element.id === ticket.id);
+        table && deleteIndex && table.tickets.splice(deleteIndex, 1);
         store.dispatch(actions.tablesLoaded(newTables));
     }
 
