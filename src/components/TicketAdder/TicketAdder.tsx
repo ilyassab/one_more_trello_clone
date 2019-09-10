@@ -64,7 +64,7 @@ class TicketAdder extends React.Component<IProps, IState> {
             }
             const table = newTables.find(((element: any) => element.id === tableId));
             table.tickets.push({id: `${uniqueId()}`, text: this.state.text});
-            store.dispatch(actions.tablesLoaded(newTables));
+            store.dispatch(actions.itemDeleted(newTables));
             this.setState({
                 adding: false,
                 text: ''

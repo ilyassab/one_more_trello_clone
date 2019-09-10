@@ -56,7 +56,7 @@ class TicketItem extends React.Component<IProps, {}> {
         });
         const deleteIndex = table && table.tickets.findIndex((element) => element.id === ticket.id);
         table && deleteIndex && table.tickets.splice(deleteIndex, 1);
-        store.dispatch(actions.tablesLoaded(newTables));
+        store.dispatch(actions.itemDeleted(newTables));
     }
 
 }

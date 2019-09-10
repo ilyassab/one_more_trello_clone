@@ -58,7 +58,7 @@ class TableAdder extends React.Component<{}, IState> {
                 newTables[i] = {...rest, tickets: [...tickets]};
             }
             newTables.push({id: `${uniqueId()}`, name: this.state.text, tickets:[]});
-            store.dispatch(actions.tablesLoaded(newTables));
+            store.dispatch(actions.itemDeleted(newTables));
             this.setState({
                 adding: false,
                 text: ''

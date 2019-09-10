@@ -19,7 +19,7 @@ interface IProps {
     tableService: any;
     tablesLoaded: any;
     tablesRequested: any;
-    tablesAdded: any;
+    itemAdded: any;
     ticketAdded: any;
 }
 
@@ -95,12 +95,12 @@ class TableList extends React.Component<IProps, {}> {
                 .find((element: ITicket, index: number) => index === source.index);
             fromTable && fromTable.tickets.splice(source.index, 1);
             toTable && ticket && toTable.tickets.splice(destination.index, 0, ticket);
-            this.props.tablesAdded(newTables);
+            this.props.itemAdded(newTables);
         } else if (type === 'column') {
             const table = newTables.find((element, index) => index === source.index);
             newTables.splice(source.index, 1);
             table && newTables.splice(destination.index, 0, table);
-            this.props.tablesAdded(newTables);
+            this.props.itemAdded(newTables);
         }
     }
 }

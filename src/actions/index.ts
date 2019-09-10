@@ -11,9 +11,16 @@ const tablesRequested = () => {
     };
 };
 
-const tablesAdded = (newTables: any) => {
+const itemAdded = (newTables: any) => {
     return {
-        type: 'TABLES_ADDED',
+        type: 'ITEM_ADDED',
+        payload: newTables
+    }
+};
+
+const itemDeleted = (newTables: any) => {
+    return {
+        type: 'ITEM_DELETED',
         payload: newTables
     }
 };
@@ -21,5 +28,6 @@ const tablesAdded = (newTables: any) => {
 export {
     tablesRequested,
     tablesLoaded,
-    tablesAdded
+    itemAdded,
+    itemDeleted
 };
