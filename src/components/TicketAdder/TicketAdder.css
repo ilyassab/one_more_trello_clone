@@ -1,5 +1,4 @@
 .ticketAdder_item {
-    font-family: Montserrat, Arial, Verdana, sans-serif;
     font-size: 13px;
     box-sizing:border-box;
     color: #6B808C;
@@ -23,7 +22,6 @@
     border:0;
     cursor: pointer;
 
-    font-family: Montserrat, Arial, Verdana, sans-serif;
     font-weight: bold;
     font-size: 13px;
     line-height: 19px;
@@ -40,7 +38,6 @@
     border-radius: 3px;
     overflow: hidden;
 
-    font-family: Montserrat, Arial, Verdana, sans-serif;
     font-size: 13px;
     line-height: 19px;
 }

@@ -35,7 +35,7 @@ class TableList extends React.Component<IProps, {}> {
     render() {
         const {tables, loading} = this.props;
         if (loading) {
-            return <div>loading spinner...</div>
+            return <div className='loader'/>
         }
 
         return (

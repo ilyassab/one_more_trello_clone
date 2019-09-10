@@ -14,17 +14,16 @@ export interface ITable {
 class TableService {
 
     data = [
-        {id: `${uniqueId()}`, name: 'Prod', tickets: [{id: `${uniqueId()}`, text: 'hello'}, {id: `${uniqueId()}`, text: 'hei'}]},
-        {id: `${uniqueId()}`, name: 'Testing', tickets: [{id: `${uniqueId()}`, text: 'qaaa'}, {id: `${uniqueId()}`, text: 'zaaaa'}]},
-        {id: `${uniqueId()}`, name: 'Tres', tickets: [{id: `${uniqueId()}`, text: 'qaaa'}, {id: `${uniqueId()}`, text: 'zaaaa'}]},
-        {id: `${uniqueId()}`, name: 'Wres', tickets: [{id: `${uniqueId()}`, text: 'qaaa'}, {id: `${uniqueId()}`, text: 'zaaaa'}]},
+        {id: `${uniqueId()}`, name: 'Dev', tickets: [{id: `${uniqueId()}`, text: 'try to learn Node.js'}, {id: `${uniqueId()}`, text: 'Make some review'}]},
+        {id: `${uniqueId()}`, name: 'Testing', tickets: [{id: `${uniqueId()}`, text: 'aaa'}, {id: `${uniqueId()}`, text: 'aa'}]},
+        {id: `${uniqueId()}`, name: 'Released', tickets: [{id: `${uniqueId()}`, text: 'first version of TrelloClone'}, {id: `${uniqueId()}`, text: 'aaaaaa'}]},
     ];
 
     getTables() {
         return new Promise((resolve) => {
             setTimeout(() => {
                 resolve(this.data)
-            }, 700)
+            }, 1000)
         });
     }
 }
