@@ -1,0 +1,16 @@
+.header {
+    height: 50px;
+    background: rgba(0, 0, 0, 0.32);
+    display: flex;
+}
+
+.header_logo {
+    cursor: pointer;
+    opacity: 0.32;
+    height: 30px;
+    margin: 10px auto 0 auto;
+}
+
+.header_logo:hover {
+    opacity: 0.75;
+}
