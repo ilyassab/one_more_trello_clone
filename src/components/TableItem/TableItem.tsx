@@ -36,7 +36,6 @@ class TableItem extends React.Component<IProps, {}> {
                                         <div
                                             {...provided.droppableProps}
                                             ref={provided.innerRef}
-                                            className='tableItem_scrollable'
                                         >
                                             <TicketList tickets={table.tickets} snapshot={snapshot}/>
                                             {provided.placeholder}
