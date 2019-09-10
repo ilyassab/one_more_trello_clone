@@ -5,13 +5,10 @@
     padding: 8px;
     margin: 0 8px 6px 8px;
     white-space: pre-line;
-    text-overflow: ellipsis;
     overflow:hidden;
     word-wrap:break-word;
     cursor:pointer;
 
-    font-style: normal;
-    font-weight: normal;
     font-size: 13px;
     line-height:19px;
 }

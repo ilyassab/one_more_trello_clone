@@ -1,9 +1,7 @@
 .ticketAdder_item {
     font-size: 13px;
-    box-sizing:border-box;
     color: #6B808C;
     padding: 12px;
-    margin-top: -6px;
     cursor: pointer;
 }
 
